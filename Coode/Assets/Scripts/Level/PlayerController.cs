@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject Reroll;
+    public GameObject Quit;
+
     private bool forbid;
+    private bool esc;
 
     void Start()
     {
         forbid = false;
+        esc = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Reroll.SetActive(false);
+        Quit.SetActive(false);
     }
     
 
@@ -16,7 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.6f);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach(Collider i in hitColliders)
             {
                 if (i.transform.position.z == transform.position.z + 1)
@@ -26,7 +35,7 @@ public class PlayerController : MonoBehaviour
                         forbid = true;
                         break;
                     }
-                    Collider[] further = Physics.OverlapSphere(transform.position, 1.6f);
+                    Collider[] further = Physics.OverlapSphere(transform.position, 1.51f);
                     foreach(Collider j in further)
                     {
                         if (j.transform.position.z == transform.position.z + 2)
@@ -46,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.6f);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach (Collider i in hitColliders)
             {
                 if (i.transform.position.z == transform.position.z - 1)
@@ -56,7 +65,7 @@ public class PlayerController : MonoBehaviour
                         forbid = true;
                         break;
                     }
-                    Collider[] further = Physics.OverlapSphere(transform.position, 1.6f);
+                    Collider[] further = Physics.OverlapSphere(transform.position, 1.51f);
                     foreach (Collider j in further)
                     {
                         if (j.transform.position.z == transform.position.z - 2)
@@ -76,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.6f);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach (Collider i in hitColliders)
             {
                 if (i.transform.position.x == transform.position.x - 1)
@@ -86,7 +95,7 @@ public class PlayerController : MonoBehaviour
                         forbid = true;
                         break;
                     }
-                    Collider[] further = Physics.OverlapSphere(transform.position, 1.6f);
+                    Collider[] further = Physics.OverlapSphere(transform.position, 1.51f);
                     foreach (Collider j in further)
                     {
                         if (j.transform.position.x == transform.position.x - 2)
@@ -106,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.6f);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach (Collider i in hitColliders)
             {
                 if (i.transform.position.x == transform.position.x + 1)
@@ -116,7 +125,7 @@ public class PlayerController : MonoBehaviour
                         forbid = true;
                         break;
                     }
-                    Collider[] further = Physics.OverlapSphere(transform.position, 1.6f);
+                    Collider[] further = Physics.OverlapSphere(transform.position, 1.51f);
                     foreach (Collider j in further)
                     {
                         if (j.transform.position.x == transform.position.x + 2)
@@ -136,5 +145,25 @@ public class PlayerController : MonoBehaviour
 
         if (forbid)
             forbid = false;
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!esc)
+            {
+                esc = true;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Reroll.SetActive(true);
+                Quit.SetActive(true);
+            }
+            else
+            {
+                esc = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Reroll.SetActive(false);
+                Quit.SetActive(false);
+            }
+        }
     }
 }
