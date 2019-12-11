@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject Reroll;
+    public GameObject Settings;
     public GameObject Quit;
+    public Finish finish;
 
     private bool forbid;
     private bool esc;
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour
         esc = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Settings.SetActive(false);
         Reroll.SetActive(false);
         Quit.SetActive(false);
     }
@@ -23,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach(Collider i in hitColliders)
@@ -44,8 +47,10 @@ public class PlayerController : MonoBehaviour
                             break;
                         }
                     }
-                    if(!forbid)
+                    if (!forbid)
+                    {
                         i.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
+                    }
                     break;
                 }
             }
@@ -53,7 +58,7 @@ public class PlayerController : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach (Collider i in hitColliders)
@@ -75,7 +80,9 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                     if (!forbid)
+                    {
                         i.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 2);
+                    }
                     break;
                 }
             }
@@ -83,7 +90,7 @@ public class PlayerController : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach (Collider i in hitColliders)
@@ -105,7 +112,9 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                     if (!forbid)
+                    {
                         i.transform.position = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
+                    }
                     break;
                 }
             }
@@ -113,7 +122,7 @@ public class PlayerController : MonoBehaviour
                 transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach (Collider i in hitColliders)
@@ -135,13 +144,17 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                     if (!forbid)
+                    {
                         i.transform.position = new Vector3(transform.position.x + 2, transform.position.y, transform.position.z);
+                    }
                     break;
                 }
             }
             if (!forbid)
                 transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
         }
+
+        finish.CheckFinished();
 
         if (forbid)
             forbid = false;
@@ -154,6 +167,7 @@ public class PlayerController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Reroll.SetActive(true);
+                Settings.SetActive(true);
                 Quit.SetActive(true);
             }
             else
@@ -162,6 +176,7 @@ public class PlayerController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 Reroll.SetActive(false);
+                Settings.SetActive(false);
                 Quit.SetActive(false);
             }
         }

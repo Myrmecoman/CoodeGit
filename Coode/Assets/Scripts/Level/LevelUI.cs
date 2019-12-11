@@ -5,12 +5,12 @@ public class LevelUI : MonoBehaviour
 {
     public void Reroll()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 
     public void Quit()
     {
-
+        SceneManager.LoadScene(1);
     }
 }
