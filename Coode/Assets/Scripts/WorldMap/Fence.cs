@@ -16,9 +16,9 @@ public class Fence : MonoBehaviour
     }
 
 
-    public void OnChange()
+    public void OnChange(bool b)
     {
-        open = !open;
+        open = b;
         if (open)
         {
             screen.materials[2] = green;

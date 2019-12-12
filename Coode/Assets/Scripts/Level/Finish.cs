@@ -9,7 +9,7 @@ public class Finish : MonoBehaviour
         foreach(Collider i in near)
         {
             if (i.tag == "Block")
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(0);
         }
     }
 }

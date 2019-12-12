@@ -7,9 +7,9 @@ public class CharacterManager : MonoBehaviour
     public Transform[] SlotList;
     public Fence[] FenceList;
 
-    private int CurrentIndex;
+    [HideInInspector]public int CurrentIndex;
 
-
+    
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -20,8 +20,11 @@ public class CharacterManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SavePlayer();
             SceneManager.LoadScene(startLevelIndex + CurrentIndex);
+        }
 
         if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow)) && CurrentIndex > 0)
         {
@@ -36,5 +39,38 @@ public class CharacterManager : MonoBehaviour
             transform.position =
                 new Vector3(SlotList[CurrentIndex].position.x, SlotList[CurrentIndex].position.y + 1, SlotList[CurrentIndex].position.z);
         }
+    }
+
+
+    public int GetMaxIndex()
+    {
+        int MaxIndex = 0;
+        foreach(Fence f in FenceList)
+        {
+            if (f.open)
+                MaxIndex++;
+            else
+                break;
+        }
+        return MaxIndex;
+    }
+
+
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        Debug.Log("CurrentIndex = " + data.Currentindex);
+        Debug.Log("MaxIndex = " + data.maxIndex);
+        CurrentIndex = data.Currentindex;
+        for (int i = data.maxIndex - 2; i >= 0; i--)
+            FenceList[i].OnChange(true);
+        transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
     }
 }
