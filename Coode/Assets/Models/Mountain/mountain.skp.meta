@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: c83e6fe79c950bf4a8c505223f940c9c
+guid: 969041cdfb943074fa1817919821e670
 SketchUpImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Carpet_Diamond_Olive
-    second: {fileID: 2800000, guid: 6e2abf4ef803af542896325aec3d09eb, type: 3}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 2
@@ -103,5 +98,5 @@ SketchUpImporter:
   selectedNodes: 0000000001000000
   assetHash:
     serializedVersion: 2
-    Hash: fa38aa3a702de1835a1f1814e00e567c
+    Hash: 1e95bdbdc15d2707d0431474a52a9a2a
   fileUnit: 0

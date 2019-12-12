@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.UpArrow))
         {
+            transform.eulerAngles = new Vector3(0, 270, 0);
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach(Collider i in hitColliders)
             {
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
+            transform.eulerAngles = new Vector3(0, 90, 0);
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach (Collider i in hitColliders)
             {
@@ -88,6 +90,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            transform.eulerAngles = new Vector3(0, 180, 0);
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach (Collider i in hitColliders)
             {
@@ -120,6 +123,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
+            transform.eulerAngles = new Vector3(0, 0, 0);
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.51f);
             foreach (Collider i in hitColliders)
             {
