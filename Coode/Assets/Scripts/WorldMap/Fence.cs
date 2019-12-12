@@ -21,13 +21,13 @@ public class Fence : MonoBehaviour
         open = b;
         if (open)
         {
-            screen.materials[2] = green;
-            transform.eulerAngles = new Vector3(0, 90, 0);
+            //screen.materials[2] = green;
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y - 90, 0);
         }
         else
         {
-            screen.materials[2] = red;
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            //screen.materials[2] = red;
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 90, 0);
         }
     }
 }

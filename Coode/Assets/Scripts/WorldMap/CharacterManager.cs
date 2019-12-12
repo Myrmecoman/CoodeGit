@@ -15,6 +15,10 @@ public class CharacterManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         CurrentIndex = 0;
+        LoadPlayer();
+        transform.position = new Vector3(SlotList[CurrentIndex].position.x, SlotList[CurrentIndex].position.y + 1, SlotList[CurrentIndex].position.z);
+        if (GameObject.Find("TellToWorldThatWeSucceeded"))
+            GameObject.Find("TellToWorldThatWeSucceeded").GetComponent<TellWorldIfSuccess>().UpdateFence(this);
     }
 
 
@@ -38,6 +42,14 @@ public class CharacterManager : MonoBehaviour
             transform.position =
                 new Vector3(SlotList[CurrentIndex].position.x, SlotList[CurrentIndex].position.y + 1, SlotList[CurrentIndex].position.z);
         }
+
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log("The length of SlotList is " + SlotList.Length);
+            Debug.Log("CurrentIndex is " + CurrentIndex);
+            foreach(Fence f in FenceList)
+                Debug.Log(f.open);
+        }
     }
 
 
@@ -55,6 +67,13 @@ public class CharacterManager : MonoBehaviour
     }
 
 
+    public void SetFence(int index)
+    {
+        Debug.Log("Setting fence " + index + " to true");
+        FenceList[index].OnChange(true);
+    }
+
+
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
@@ -67,9 +86,9 @@ public class CharacterManager : MonoBehaviour
 
         Debug.Log("CurrentIndex = " + data.Currentindex);
         Debug.Log("MaxIndex = " + data.maxIndex);
-        CurrentIndex = data.Currentindex;
-        for (int i = data.maxIndex - 2; i >= 0; i--)
-            FenceList[i].OnChange(true);
-        transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+        //CurrentIndex = data.Currentindex;
+        //for (int i = data.maxIndex - 2; i >= 0; i--)
+        //    FenceList[i].OnChange(true);
+        transform.position = new Vector3(SlotList[CurrentIndex].position.x, SlotList[CurrentIndex].position.y + 1, SlotList[CurrentIndex].position.z);
     }
 }
