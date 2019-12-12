@@ -82,7 +82,7 @@ public class CharacterManager : MonoBehaviour
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
-
+        
         Debug.Log("CurrentIndex = " + data.Currentindex);
         Debug.Log("MaxIndex = " + data.maxIndex);
         CurrentIndex = data.Currentindex;
