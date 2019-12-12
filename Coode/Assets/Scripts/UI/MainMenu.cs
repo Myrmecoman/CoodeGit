@@ -9,6 +9,12 @@ public class MainMenu : MonoBehaviour
     }
 
 
+    public void ResetProgress()
+    {
+
+    }
+
+
     public void Quit()
     {
         Application.Quit();

@@ -9,7 +9,7 @@ public class Fence : MonoBehaviour
     private MeshRenderer screen;
 
 
-    private void Start()
+    private void Awake()
     {
         open = false;
         screen = GetComponent<MeshRenderer>();

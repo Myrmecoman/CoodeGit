@@ -16,7 +16,6 @@ public class CharacterManager : MonoBehaviour
         Cursor.visible = true;
         CurrentIndex = 0;
         LoadPlayer();
-        transform.position = new Vector3(SlotList[CurrentIndex].position.x, SlotList[CurrentIndex].position.y + 1, SlotList[CurrentIndex].position.z);
         if (GameObject.Find("TellToWorldThatWeSucceeded"))
             GameObject.Find("TellToWorldThatWeSucceeded").GetComponent<TellWorldIfSuccess>().UpdateFence(this);
     }
@@ -26,6 +25,7 @@ public class CharacterManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            SavePlayer();
             SceneManager.LoadScene(startLevelIndex + CurrentIndex);
         }
 
@@ -55,7 +55,7 @@ public class CharacterManager : MonoBehaviour
 
     public int GetMaxIndex()
     {
-        int MaxIndex = 0;
+        int MaxIndex = -1;
         foreach(Fence f in FenceList)
         {
             if (f.open)
@@ -69,7 +69,6 @@ public class CharacterManager : MonoBehaviour
 
     public void SetFence(int index)
     {
-        Debug.Log("Setting fence " + index + " to true");
         FenceList[index].OnChange(true);
     }
 
@@ -86,9 +85,9 @@ public class CharacterManager : MonoBehaviour
 
         Debug.Log("CurrentIndex = " + data.Currentindex);
         Debug.Log("MaxIndex = " + data.maxIndex);
-        //CurrentIndex = data.Currentindex;
-        //for (int i = data.maxIndex - 2; i >= 0; i--)
-        //    FenceList[i].OnChange(true);
+        CurrentIndex = data.Currentindex;
+        for (int i = data.maxIndex; i >= 0; i--)
+            FenceList[i].OnChange(true);
         transform.position = new Vector3(SlotList[CurrentIndex].position.x, SlotList[CurrentIndex].position.y + 1, SlotList[CurrentIndex].position.z);
     }
 }
