@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject Reroll;
-    public GameObject Settings;
-    public GameObject Quit;
+    public GameObject img;
     public Finish finish;
 
     private bool forbid;
@@ -18,9 +16,7 @@ public class PlayerController : MonoBehaviour
         esc = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Settings.SetActive(false);
-        Reroll.SetActive(false);
-        Quit.SetActive(false);
+        img.SetActive(false);
     }
     
 
@@ -166,18 +162,14 @@ public class PlayerController : MonoBehaviour
                 esc = true;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                Reroll.SetActive(true);
-                Settings.SetActive(true);
-                Quit.SetActive(true);
+                img.SetActive(true);
             }
             else
             {
                 esc = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
-                Reroll.SetActive(false);
-                Settings.SetActive(false);
-                Quit.SetActive(false);
+                img.SetActive(false);
             }
         }
     }
