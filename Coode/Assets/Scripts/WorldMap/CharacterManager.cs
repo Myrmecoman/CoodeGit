@@ -22,7 +22,6 @@ public class CharacterManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SavePlayer();
             SceneManager.LoadScene(startLevelIndex + CurrentIndex);
         }
 
