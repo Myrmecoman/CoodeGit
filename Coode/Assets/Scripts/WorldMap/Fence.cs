@@ -2,10 +2,7 @@
 
 public class Fence : MonoBehaviour
 {
-    public bool open;
-    public Material red;
-    public Material green;
-
+    [HideInInspector] public bool open;
     private MeshRenderer screen;
 
 
@@ -13,6 +10,7 @@ public class Fence : MonoBehaviour
     {
         open = false;
         screen = GetComponent<MeshRenderer>();
+        screen.materials[2].color = Color.red;
     }
 
 
@@ -21,12 +19,12 @@ public class Fence : MonoBehaviour
         open = b;
         if (open)
         {
-            //screen.materials[2] = green;
+            screen.materials[2].color = Color.white;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y - 90, 0);
         }
         else
         {
-            //screen.materials[2] = red;
+            screen.materials[2].color = Color.red;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 90, 0);
         }
     }

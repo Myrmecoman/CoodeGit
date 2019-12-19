@@ -2074,8 +2074,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   open: 0
-  red: {fileID: 2100000, guid: b8b195b914e162445a25398ea8fa81df, type: 2}
-  green: {fileID: 2100000, guid: a04af433b71943b4bb0cf0f0ce1c3bbd, type: 2}
 --- !u!23 &473700935
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4290,8 +4288,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   open: 0
-  red: {fileID: 2100000, guid: b8b195b914e162445a25398ea8fa81df, type: 2}
-  green: {fileID: 2100000, guid: a04af433b71943b4bb0cf0f0ce1c3bbd, type: 2}
 --- !u!23 &1166634449
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6165,13 +6161,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858098189}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.043289967, z: -0, w: 0.99906254}
   m_LocalPosition: {x: -36.58, y: -0.3, z: -78.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 323016232}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 4.9620004, z: 0}
 --- !u!23 &1858098191
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11523,8 +11519,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   open: 0
-  red: {fileID: 2100000, guid: b8b195b914e162445a25398ea8fa81df, type: 2}
-  green: {fileID: 2100000, guid: a04af433b71943b4bb0cf0f0ce1c3bbd, type: 2}
 --- !u!33 &8504157391190334487
 MeshFilter:
   m_ObjectHideFlags: 0
