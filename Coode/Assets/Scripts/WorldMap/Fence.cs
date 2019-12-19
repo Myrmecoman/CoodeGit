@@ -19,7 +19,7 @@ public class Fence : MonoBehaviour
         open = b;
         if (open)
         {
-            screen.materials[2].color = Color.white;
+            screen.materials[2].color = Color.green;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y - 90, 0);
         }
         else
