@@ -38,16 +38,14 @@ public class PlayerController : MonoBehaviour
                     Collider[] further = Physics.OverlapSphere(transform.position, 1.51f);
                     foreach(Collider j in further)
                     {
-                        if (j.transform.position.z == transform.position.z + 2)
+                        if (j.transform.position.z == i.transform.position.z + 1)
                         {
                             forbid = true;
                             break;
                         }
                     }
                     if (!forbid)
-                    {
-                        i.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
-                    }
+                        i.transform.position = new Vector3(i.transform.position.x, i.transform.position.y, i.transform.position.z + 1);
                     break;
                 }
             }
@@ -71,16 +69,14 @@ public class PlayerController : MonoBehaviour
                     Collider[] further = Physics.OverlapSphere(transform.position, 1.51f);
                     foreach (Collider j in further)
                     {
-                        if (j.transform.position.z == transform.position.z - 2)
+                        if (j.transform.position.z == i.transform.position.z - 1)
                         {
                             forbid = true;
                             break;
                         }
                     }
                     if (!forbid)
-                    {
-                        i.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 2);
-                    }
+                        i.transform.position = new Vector3(i.transform.position.x, i.transform.position.y, i.transform.position.z - 1);
                     break;
                 }
             }
@@ -104,16 +100,14 @@ public class PlayerController : MonoBehaviour
                     Collider[] further = Physics.OverlapSphere(transform.position, 1.51f);
                     foreach (Collider j in further)
                     {
-                        if (j.transform.position.x == transform.position.x - 2)
+                        if (j.transform.position.x == i.transform.position.x - 1)
                         {
                             forbid = true;
                             break;
                         }
                     }
                     if (!forbid)
-                    {
-                        i.transform.position = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
-                    }
+                        i.transform.position = new Vector3(i.transform.position.x - 1, i.transform.position.y, i.transform.position.z);
                     break;
                 }
             }
@@ -137,16 +131,14 @@ public class PlayerController : MonoBehaviour
                     Collider[] further = Physics.OverlapSphere(transform.position, 1.51f);
                     foreach (Collider j in further)
                     {
-                        if (j.transform.position.x == transform.position.x + 2)
+                        if (j.transform.position.x == i.transform.position.x + 1)
                         {
                             forbid = true;
                             break;
                         }
                     }
                     if (!forbid)
-                    {
-                        i.transform.position = new Vector3(transform.position.x + 2, transform.position.y, transform.position.z);
-                    }
+                        i.transform.position = new Vector3(i.transform.position.x + 1, i.transform.position.y, i.transform.position.z);
                     break;
                 }
             }
