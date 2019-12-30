@@ -18,7 +18,16 @@ public class CharacterManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         CurrentIndex = 0;
-        LoadPlayer();
+        TimesList = new double[SlotList.Length];
+        try
+        {
+            LoadPlayer();
+        }
+        catch
+        {
+            SavePlayer();
+            LoadPlayer();
+        }
         GameObject found = GameObject.Find("TellToWorldThatWeSucceeded");
         if (found)
         {
@@ -95,7 +104,7 @@ public class CharacterManager : MonoBehaviour
         
         Debug.Log("CurrentIndex = " + data.Currentindex);
         Debug.Log("MaxIndex = " + data.maxIndex);
-        TimesList = new double[SlotList.Length];
+
         for (int i = 0; i < SlotList.Length; i++)
             TimesList[i] = data.timesRecord[i];
         CurrentIndex = data.Currentindex;
