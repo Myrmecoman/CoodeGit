@@ -96,6 +96,8 @@ public class CharacterManager : MonoBehaviour
         Debug.Log("CurrentIndex = " + data.Currentindex);
         Debug.Log("MaxIndex = " + data.maxIndex);
         TimesList = new double[SlotList.Length];
+        for (int i = 0; i < SlotList.Length; i++)
+            TimesList[i] = data.timesRecord[i];
         CurrentIndex = data.Currentindex;
         for (int i = data.maxIndex; i >= 0; i--)
             FenceList[i].OnChange(true);
