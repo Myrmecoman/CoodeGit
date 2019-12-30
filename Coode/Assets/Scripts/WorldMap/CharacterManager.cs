@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CharacterManager : MonoBehaviour
 {
     public int startLevelIndex;
+    public TextMeshProUGUI timeRecord;
     public Transform[] SlotList;
     public Fence[] FenceList;
 
-    [HideInInspector]public int CurrentIndex;
+    [HideInInspector] public int CurrentIndex;
+    [HideInInspector] public double[] TimesList;
 
     
     private void Start()
@@ -16,8 +19,13 @@ public class CharacterManager : MonoBehaviour
         Cursor.visible = true;
         CurrentIndex = 0;
         LoadPlayer();
-        if (GameObject.Find("TellToWorldThatWeSucceeded"))
-            GameObject.Find("TellToWorldThatWeSucceeded").GetComponent<TellWorldIfSuccess>().UpdateFence(this);
+        GameObject found = GameObject.Find("TellToWorldThatWeSucceeded");
+        if (found)
+        {
+            found.GetComponent<TellWorldIfSuccess>().UpdateFence(this);
+            found.GetComponent<TellWorldIfSuccess>().UpdateTimes(this);
+            timeRecord.text = "Personnal record : " + TimesList[CurrentIndex] + " sec";
+        }
     }
 
 
@@ -32,6 +40,7 @@ public class CharacterManager : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow)) && CurrentIndex > 0)
         {
             CurrentIndex--;
+            timeRecord.text = "Personnal record : " + TimesList[CurrentIndex] + " sec";
             transform.position =
                 new Vector3(SlotList[CurrentIndex].position.x, SlotList[CurrentIndex].position.y + 1, SlotList[CurrentIndex].position.z);
         }
@@ -39,6 +48,7 @@ public class CharacterManager : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && CurrentIndex < SlotList.Length - 1 && FenceList[CurrentIndex].open)
         {
             CurrentIndex++;
+            timeRecord.text = "Personnal record : " + TimesList[CurrentIndex] + " sec";
             transform.position =
                 new Vector3(SlotList[CurrentIndex].position.x, SlotList[CurrentIndex].position.y + 1, SlotList[CurrentIndex].position.z);
         }
@@ -85,6 +95,7 @@ public class CharacterManager : MonoBehaviour
         
         Debug.Log("CurrentIndex = " + data.Currentindex);
         Debug.Log("MaxIndex = " + data.maxIndex);
+        TimesList = new double[SlotList.Length];
         CurrentIndex = data.Currentindex;
         for (int i = data.maxIndex; i >= 0; i--)
             FenceList[i].OnChange(true);

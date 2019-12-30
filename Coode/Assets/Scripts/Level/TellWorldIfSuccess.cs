@@ -5,6 +5,7 @@ public class TellWorldIfSuccess : MonoBehaviour
 {
     private bool success;
     private int sceneID;
+    private double timer;
 
 
     private void Awake()
@@ -16,6 +17,7 @@ public class TellWorldIfSuccess : MonoBehaviour
     private void Start()
     {
         success = false;
+        timer = 0;
         sceneID = SceneManager.GetActiveScene().buildIndex;
     }
 
@@ -23,6 +25,13 @@ public class TellWorldIfSuccess : MonoBehaviour
     public void Success()
     {
         success = true;
+    }
+
+    
+    private void Update()
+    {
+        if (!success)
+            timer += Time.deltaTime;
     }
 
 
@@ -34,5 +43,12 @@ public class TellWorldIfSuccess : MonoBehaviour
             player.SetFence(sceneID - 2);
         }
         Destroy(gameObject);
+    }
+
+
+    public void UpdateTimes(CharacterManager player)
+    {
+        if ((player.TimesList[player.CurrentIndex] > timer || player.TimesList[player.CurrentIndex] == 0) && success)
+            player.TimesList[player.CurrentIndex] = timer;
     }
 }
