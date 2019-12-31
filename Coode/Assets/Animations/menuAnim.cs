@@ -18,13 +18,19 @@ public class menuAnim : MonoBehaviour
             b = false;
     }
 
-    private void Update()
+    void Update()
     {
-        if(b)
-            Vector3.MoveTowards(transform.position, minZ, Time.smoothDeltaTime);
+        if (b)
+        {
+            transform.position = Vector3.Lerp(transform.position, minZ, Time.smoothDeltaTime/8);
+            if (transform.position.z <= minZ.z + 0.05f)
+                b = false;
+        }
         else
-            Vector3.MoveTowards(transform.position, maxZ, Time.smoothDeltaTime);
-        if (transform.position.z <= minZ.z || transform.position.z >= maxZ.z)
-            b = !b;
+        {
+            transform.position = Vector3.Lerp(transform.position, maxZ, Time.smoothDeltaTime/8);
+            if (transform.position.z >= maxZ.z - 0.05f)
+                b = true;
+        }
     }
 }
