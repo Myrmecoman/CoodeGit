@@ -1501,6 +1501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f693768614d1e7e4983fbdfe7ff3e29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0
 --- !u!1 &2105721571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,6 +2818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba3b8446dd082c44a2c7a06ad7ec5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theTeller: {fileID: 2017714400}
 --- !u!114 &5098739629852832800
 MonoBehaviour:
   m_ObjectHideFlags: 0

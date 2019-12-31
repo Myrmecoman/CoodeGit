@@ -35,20 +35,18 @@ public class TellWorldIfSuccess : MonoBehaviour
     }
 
 
-    public void UpdateFence(CharacterManager player)
+    // we destroy the object
+    public void UpdateAll(CharacterManager player)
     {
         if (!player.FenceList[sceneID - 2].open && success)
         {
             Debug.Log("Setting fence number " + (sceneID - 2) + " to true");
             player.SetFence(sceneID - 2);
         }
-        Destroy(gameObject);
-    }
 
-
-    public void UpdateTimes(CharacterManager player)
-    {
         if ((player.TimesList[player.CurrentIndex] > timer || player.TimesList[player.CurrentIndex] == 0) && success)
             player.TimesList[player.CurrentIndex] = timer;
+
+        Destroy(gameObject);
     }
 }

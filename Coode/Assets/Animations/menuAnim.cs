@@ -22,13 +22,13 @@ public class menuAnim : MonoBehaviour
     {
         if (b)
         {
-            transform.position = Vector3.Lerp(transform.position, minZ, Time.smoothDeltaTime/8);
+            transform.position = Vector3.Lerp(transform.position, minZ, Time.smoothDeltaTime/12);
             if (transform.position.z <= minZ.z + 0.05f)
                 b = false;
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, maxZ, Time.smoothDeltaTime/8);
+            transform.position = Vector3.Lerp(transform.position, maxZ, Time.smoothDeltaTime/12);
             if (transform.position.z >= maxZ.z - 0.05f)
                 b = true;
         }

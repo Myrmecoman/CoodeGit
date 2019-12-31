@@ -31,9 +31,11 @@ public class CharacterManager : MonoBehaviour
         GameObject found = GameObject.Find("TellToWorldThatWeSucceeded");
         if (found)
         {
-            found.GetComponent<TellWorldIfSuccess>().UpdateFence(this);
-            found.GetComponent<TellWorldIfSuccess>().UpdateTimes(this);
-            timeRecord.text = "Personnal record : " + TimesList[CurrentIndex] + " sec";
+            found.GetComponent<TellWorldIfSuccess>().UpdateAll(this);
+            if (TimesList[CurrentIndex] == 0)
+                timeRecord.text = "No time yet";
+            else
+                timeRecord.text = "Personnal record : " + TimesList[CurrentIndex] + " sec";
         }
     }
 
@@ -49,7 +51,10 @@ public class CharacterManager : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow)) && CurrentIndex > 0)
         {
             CurrentIndex--;
-            timeRecord.text = "Personnal record : " + TimesList[CurrentIndex] + " sec";
+            if (TimesList[CurrentIndex] == 0)
+                timeRecord.text = "No time yet";
+            else
+                timeRecord.text = "Personnal record : " + TimesList[CurrentIndex] + " sec";
             transform.position =
                 new Vector3(SlotList[CurrentIndex].position.x, SlotList[CurrentIndex].position.y + 1, SlotList[CurrentIndex].position.z);
         }
@@ -57,7 +62,10 @@ public class CharacterManager : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && CurrentIndex < SlotList.Length - 1 && FenceList[CurrentIndex].open)
         {
             CurrentIndex++;
-            timeRecord.text = "Personnal record : " + TimesList[CurrentIndex] + " sec";
+            if (TimesList[CurrentIndex] == 0)
+                timeRecord.text = "No time yet";
+            else
+                timeRecord.text = "Personnal record : " + TimesList[CurrentIndex] + " sec";
             transform.position =
                 new Vector3(SlotList[CurrentIndex].position.x, SlotList[CurrentIndex].position.y + 1, SlotList[CurrentIndex].position.z);
         }
