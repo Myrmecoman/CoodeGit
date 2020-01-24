@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿/*
+using System.IO;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -10,6 +11,7 @@ using System;
 
 namespace SNAP
 {
+    
     public class PackageChecker
     {
 
@@ -202,4 +204,6 @@ namespace SNAP
 
 
     }
+    
 }
+*/
